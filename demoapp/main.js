@@ -9,6 +9,6 @@ http.createServer(function (request, response) {
 
         // Send the response body as "Hello World"
         response.end('Hello World\n');
-}).listen(5000);
+}).listen(5000, "0.0.0.0");
 
 console.log('Server running at http://127.0.0.1:5000/');

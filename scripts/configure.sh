@@ -20,6 +20,8 @@ sudo apt install -y nodejs
 sudo apt install -y npm 
 
 #run node application
+cd /opt/demoapp
+node main.js &
 
 
 # install nginx, update config file
@@ -30,7 +32,5 @@ sudo wget https://raw.githubusercontent.com/manojsingh/azureautomation/master/de
 sudo cp /opt/demoapp/nginx-config/default /etc/nginx/sites-available/
 sudo nginx -s reload
 
-
-
 # Populate DB for Demo
-/opt/demoapp/populatedb.sh &
+/opt/demoapp/sql/populatedb.sh &

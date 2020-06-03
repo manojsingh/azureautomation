@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sshKeyData": {
+            "reference": {
+                "keyVault": {
+                "id": "/subscriptions/dd850c35-107b-4792-8ff9-200e793eeb67/resourceGroups/RG05/providers/Microsoft.KeyVault/vaults/harmanKV"
+                },
+                "secretName": "sshKey"
+            }
+        },
+        "adminUsername": {
+            "value": "azureuser"
+        },
+        "adminPassword": {
+            "reference": {
+                "keyVault": {
+                "id": "/subscriptions/dd850c35-107b-4792-8ff9-200e793eeb67/resourceGroups/RG05/providers/Microsoft.KeyVault/vaults/harmanKV"
+                },
+                "secretName": "azurePassword"
+            }
+        },
+        "publicipaddressDnsName": {
+            "value": "demoapp"
+        },
+        "sqlAdminPassword": {
+            "reference": {
+                "keyVault": {
+                "id": "/subscriptions/dd850c35-107b-4792-8ff9-200e793eeb67/resourceGroups/RG05/providers/Microsoft.KeyVault/vaults/harmanKV"
+                },
+                "secretName": "sqlPassword"
+            }
+        },
+        "numberOfInstances": {
+            "value" : 2
+        }
+    }
+}
