@@ -76,7 +76,7 @@
         "properties": {
           "securityRules": [
             {
-              "name": "http",
+              "name": "http_80",
               "properties": {
                 "description": "http endpoint",
                 "protocol": "Tcp",
@@ -89,6 +89,20 @@
                 "direction": "Inbound"
               }
             },
+            {
+                "name": "http_5000",
+                "properties": {
+                  "description": "http endpoint",
+                  "protocol": "Tcp",
+                  "sourcePortRange": "*",
+                  "destinationPortRange": "5000",
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "*",
+                  "access": "Allow",
+                  "priority": 200,
+                  "direction": "Inbound"
+                }
+              },
             {
               "name": "ssh",
               "properties": {
@@ -147,18 +161,24 @@
         "properties": {
           "addressSpace": {
             "addressPrefixes": [
-              "10.0.0.0/24"
+              "10.0.0.0/16"
             ]
           },
           "subnets": [
             {
               "name": "[variables('subnetName')]",
               "properties": {
-                "addressPrefix": "10.0.0.0/24",
+                "addressPrefix": "10.0.0.1/24",
                 "networkSecurityGroup": {
                   "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroup'))]"
                 }
               }
+            },
+            {
+                "name": "AzureBastionSubnet",
+                "properties": {
+                  "addressPrefix": "10.0.0.2/24"
+                }
             }
           ]
         }
@@ -391,7 +411,7 @@
         "location": "[resourceGroup().location]",
         "dependsOn": [],
         "tags": {
-          "displayName": "avalibility-set"
+          "displayName": "availability-set"
         },
         "properties": {
           "platformUpdateDomainCount": 5,
