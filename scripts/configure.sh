@@ -9,16 +9,18 @@ export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y install powershell
 
 # download application
-sudo wget https://raw.github.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/music-app/music-store-azure-demo-pub.tar /
+sudo wget https://raw.githubusercontent.com/manojsingh/azureautomation/master/demoapp/demoapp.tar /
 sudo mkdir /opt/demoapp
-sudo tar -xf demo-app.tar -C /opt/demoapp
+sudo tar -xf demoapp.tar -C /opt/demoapp
 
 
 # install nodejs
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-sudo apt-get update
-sudo apt-get install -y dotnet-dev-1.0.0-preview2-003121
+sudo apt update
+sudo apt install -y nodejs
+sudo apt install -y npm 
+
+#run node application
+
 
 # install nginx, update config file
 sudo apt-get install -y nginx
