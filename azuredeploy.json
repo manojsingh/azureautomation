@@ -168,7 +168,7 @@
             {
               "name": "[variables('subnetName')]",
               "properties": {
-                "addressPrefix": "10.0.0.1/24",
+                "addressPrefix": "10.0.1.0/24",
                 "networkSecurityGroup": {
                   "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroup'))]"
                 }
@@ -177,7 +177,7 @@
             {
                 "name": "AzureBastionSubnet",
                 "properties": {
-                  "addressPrefix": "10.0.0.2/24"
+                  "addressPrefix": "10.0.2.0/24"
                 }
             }
           ]
