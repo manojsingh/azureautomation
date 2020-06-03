@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnet_name": {
+            "value": "test-vnet"
+        },
+        "vnet_addressPrefixes": {
+            "value": "10.4.0.0/16"
+        },
+        "front_subnet_name": {
+            "value": "FE"
+        },
+        "fesubnet_addressPrefixes": {
+            "value": "10.4.0.0/24"
+        },
+        "backend_subnet_name": {
+            "value": "BE"
+        },
+        "besubnet_addressPrefixes": {
+            "value": "10.4.1.0/24"
+        },
+        "dbsubnet_name": {
+            "value": "DB"
+        },
+        "dbsubnet_addressPrefixes": {
+            "value": "10.4.2.0/24"
+        },
+        "resourceTags": {
+            "value": {
+              "Environment": "Development",
+              "Project": "Harman Test"
+            }
+        },
+        "sshKeyData": {
+            "value": "sshkey"
+        },
+        "adminUsername": {
+            "value": "azureuser"
+        },
+        "publicipaddressDnsName": {
+            "value": "dnsname"
+        },
+        "sqlAdminPassword": {
+            "value": "password"
+        }
+    }
+}
