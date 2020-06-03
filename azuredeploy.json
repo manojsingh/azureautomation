@@ -42,7 +42,7 @@
       "vmSize": "Standard_D1_v2",
       "imagePublisher": "Canonical",
       "imageOffer": "UbuntuServer",
-      "ubuntuOSVersion": "18.04.2-LTS",
+      "ubuntuOSVersion": "18.04-LTS",
       "vhdStorageType": "Standard_LRS",
       "vhdStorageName": "[concat('vhdstorage', uniqueString(resourceGroup().id))]",
       "availabilitySetName": "AvalibilitySet",
