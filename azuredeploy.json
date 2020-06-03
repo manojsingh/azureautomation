@@ -15,6 +15,12 @@
           "description": "Admin user name for VM and SQL Database."
         }
       },
+      "adminUsername": {
+        "type": "securestring",
+        "metadata": {
+          "description": "Password for VMs."
+        }
+      },
       "sqlAdminPassword": {
         "type": "securestring",
         "metadata": {
@@ -339,8 +345,9 @@
           "osProfile": {
             "computerName": "[concat(variables('vmName'),copyindex())]",
             "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]",
             "linuxConfiguration": {
-              "disablePasswordAuthentication": "true",
+              "disablePasswordAuthentication": "false",
               "ssh": {
                 "publicKeys": [
                   {
