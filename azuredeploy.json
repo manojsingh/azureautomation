@@ -38,7 +38,7 @@
       }
     },
     "variables": {
-      "vmName": "MusicApp",
+      "vmName": "DemoApp",
       "vmSize": "Standard_D1_v2",
       "imagePublisher": "Canonical",
       "imageOffer": "UbuntuServer",
@@ -48,7 +48,7 @@
       "availabilitySetName": "AvalibilitySet",
       "virtualNetworkName": "VirtualNetwork",
       "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
-      "subnetName": "MusicSubnet",
+      "subnetName": "DemoAppSubnet",
       "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
       "networkInterfaceName": "NetworkInterface",
       "publicIpAddressName": "PublicIp",
@@ -60,7 +60,7 @@
       "lbPoolID": "[concat(variables('lbID'),'/backendAddressPools/',variables('lbBackEndPool'))]",
       "lbProbeID": "[concat(variables('lbID'),'/probes/lbprobe')]",
       "networkSecurityGroup": "NetworkSecurityGroup",
-      "musicStoreSqlName": "[concat('sql', uniqueString(resourceGroup().id))]",
+      "demoStoreSqlName": "[concat('sql', uniqueString(resourceGroup().id))]",
       "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]"
     },
   
@@ -374,11 +374,11 @@
               "autoUpgradeMinorVersion": true,
               "settings": {
                 "fileUris": [
-                  "https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"
+                  "https://raw.githubusercontent.com/manojsingh/azureautomation/master/scripts/configure.sh"
                 ]
               },
               "protectedSettings": {
-                "commandToExecute": "[concat('sudo sh config-music.sh ',variables('musicStoreSqlName'), ' ', parameters('adminUsername'), ' ', parameters('sqlAdminPassword'))]"
+                "commandToExecute": "[concat('sudo sh config.sh ',variables('demoStoreSqlName'), ' ', parameters('adminUsername'), ' ', parameters('sqlAdminPassword'))]"
               }
             }
           }
@@ -399,14 +399,14 @@
         }
       },
       {
-        "apiVersion": "2014-04-01-preview",
+        "apiVersion": "2014-04-01",
         "type": "Microsoft.Sql/servers",
-        "name": "[variables('musicStoreSqlName')]",
+        "name": "[variables('demoStoreSqlName')]",
         "location": "[resourceGroup().location]",
   
         "dependsOn": [],
         "tags": {
-          "displayName": "sql-music-store"
+          "displayName": "sql-demo-store"
         },
         "properties": {
           "administratorLogin": "[parameters('adminUsername')]",
@@ -414,12 +414,12 @@
         },
         "resources": [
           {
-            "apiVersion": "2014-04-01-preview",
-            "type": "firewallrules",
+            "apiVersion": "2014-04-01",
+            "type": "firewallRules",
             "name": "firewall-allow-azure",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-              "[concat('Microsoft.Sql/servers/', variables('musicStoreSqlName'))]"
+              "[concat('Microsoft.Sql/servers/', variables('demoStoreSqlName'))]"
             ],
             "properties": {
               "startIpAddress": "0.0.0.0",
