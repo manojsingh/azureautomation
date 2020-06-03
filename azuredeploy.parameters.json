@@ -3,7 +3,12 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sshKeyData": {
-            "value": "sshkey"
+            "reference": {
+                "keyVault": {
+                "id": "/subscriptions/dd850c35-107b-4792-8ff9-200e793eeb67/resourceGroups/RG05/providers/Microsoft.KeyVault/vaults/harmanKV"
+                },
+                "secretName": "sshKey"
+            }
         },
         "adminUsername": {
             "value": "azureuser"
@@ -12,7 +17,12 @@
             "value": "demoapp"
         },
         "sqlAdminPassword": {
-            "value": "password"
+            "reference": {
+                "keyVault": {
+                "id": "/subscriptions/dd850c35-107b-4792-8ff9-200e793eeb67/resourceGroups/RG05/providers/Microsoft.KeyVault/vaults/harmanKV"
+                },
+                "secretName": "sqlPassword"
+            }
         }
     }
 }
