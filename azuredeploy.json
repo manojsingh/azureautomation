@@ -15,7 +15,7 @@
           "description": "Admin user name for VM and SQL Database."
         }
       },
-      "adminUsername": {
+      "adminPassword": {
         "type": "securestring",
         "metadata": {
           "description": "Password for VMs."
