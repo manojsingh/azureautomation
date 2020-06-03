@@ -378,7 +378,7 @@
                 ]
               },
               "protectedSettings": {
-                "commandToExecute": "[concat('sudo sh config.sh ',variables('demoStoreSqlName'), ' ', parameters('adminUsername'), ' ', parameters('sqlAdminPassword'))]"
+                "commandToExecute": "[concat('sudo sh configure.sh ',variables('demoStoreSqlName'), ' ', parameters('adminUsername'), ' ', parameters('sqlAdminPassword'))]"
               }
             }
           }
